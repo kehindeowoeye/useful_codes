@@ -1,0 +1,23 @@
+
+#Using AIC and BIC to know the most parsimonious number of components in a gaussian mixture
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+import numpy as np
+from sklearn.cluster import KMeans
+from scipy.spatial.distance import cdist 
+from sklearn.mixture import GMM
+n_components = np.arange(1, 21)
+from sklearn.datasets import make_moons
+
+models = [GMM(n, covariance_type='full', random_state=0).fit(Xmoon)
+           for n in n_components]
+
+#where moon is the data of interest.
+
+plt.plot(n_components, [m.bic(Xmoon) for m in models], label='BIC')
+plt.plot(n_components, [m.aic(Xmoon) for m in models], label='AIC')
+plt.legend(loc='best')
+plt.xlabel('n_components');
+plt.show()
