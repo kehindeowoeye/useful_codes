@@ -1,0 +1,7 @@
+floatToBin <- function(x){
+  int_part <- floor(x)
+  dec_part <- x - int_part
+  int_bin <- R.utils::intToBin(int_part)
+  dec_bin <- stringr::str_pad(R.utils::intToBin(dec_part * 2^31), 31, pad="0")
+  sub("[.]?0+$", "", paste0(int_bin, ".", dec_bin)) 
+}
