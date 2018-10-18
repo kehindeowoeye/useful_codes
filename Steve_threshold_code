@@ -1,0 +1,40 @@
+
+gx1 = cv(:,1);gy1 = cv(:,37); gx = cv(:,2:36);gy = cv(:,38:72);
+dx1 = gx1-gx;dx2 = gy1-gy; dist = sqrt(dx1.^2+dx2.^2);lebe = find(cv(:,73)==2);
+dist = dist(lebe,:);ada=[];gx = gx(lebe,:);gy = gy(lebe,:);gxx = diff(gx);gyy = diff(gy);
+ta = csvread('train22.csv');da = ta(:,73);
+
+for u = 1:28649
+    ada = vertcat(ada,sort(dist(u,:)));
+end
+
+ada1 = ada(:,1:2);
+
+ada2=[];ab=[];
+for u = 1:28649
+    ac = ada1(u,:);
+    for j = 1:2
+      ab = horzcat(ab,find(dist(u,:)==ac(j)));
+    end
+    ada2 = vertcat(ada2,ab);ab=[];
+end
+
+
+okok=[];lo=[];
+for i = 1:28649
+    lw = ada2(i,:);
+    lo =  horzcat(lo,gxx(i,lw),gyy(i,lw));
+
+    okok = vertcat(okok,lo);lo=[];
+end
+
+
+%okok1 = diff(okok);
+b1 = sqrt((okok(:,1)).^2+(okok(:,3)).^2);
+b2 = sqrt((okok(:,2)).^2+(okok(:,4)).^2);
+ba = [];
+ba = horzcat(ba,b1,b2,da(1:28649,:));
+baba1 = ba(find(ba(:,3)==1),:);
+baba2 = ba(find(ba(:,3)==2),:);
+baba1_cut = mean(mean(baba1(:,1:2)));
+baba2_cut = mean(mean(baba2(:,1:2)));
