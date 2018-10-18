@@ -38,3 +38,47 @@ baba1 = ba(find(ba(:,3)==1),:);
 baba2 = ba(find(ba(:,3)==2),:);
 baba1_cut = mean(mean(baba1(:,1:2)));
 baba2_cut = mean(mean(baba2(:,1:2)));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%test
+adama=[];
+for u = 28650:35811
+    adama = vertcat(adama,sort(dist(u,:)));
+end
+
+ada11 = adama(:,1:2);
+ada3=[];ab=[];
+for u = 1:size(ada11,1)
+    ac = ada11(u,:);
+    for j = 1:2
+      ab = horzcat(ab,find(dist(28649+u,:)==ac(j)));
+    end
+    ada3 = vertcat(ada3,ab);ab=[];
+end
+
+
+obob=[];li=[];
+for i = 1:size(ada11,1)
+    lw = ada3(i,:);
+    li =  horzcat(li,gxx(i,lw),gyy(i,lw));
+    obob = vertcat(obob,li);li=[];
+end
+
+b11 = sqrt((obob(:,1)).^2+(obob(:,3)).^2);
+b22 = sqrt((obob(:,2)).^2+(obob(:,4)).^2);
+baca=[];
+baca = horzcat(baca,b11,b22,da(28650:end,:));
+
+result=[];
+for i = 1:size(baca,1)
+    gy = mean(mean(baca(i,1:2)));
+    if gy<=baba1_cut
+        ot = 1;
+    else
+        ot = 2;
+    end
+    result = vertcat(result,ot);
+end
+hg = result - baca(:,3);
+accu = numel(find(hg==0))/(size(baca,1));
+ 
