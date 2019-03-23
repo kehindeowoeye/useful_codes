@@ -1,5 +1,8 @@
 %circle with noise kl divergence
 
+%https://uk.mathworks.com/help/comm/ref/awgn.html
+%the higher the SNR, the lower the noise and vice versa 
+
  df = [];dada = zeros(1,10);
  theta = 0:0.01:2*pi;
  r = 2;
