@@ -1,0 +1,250 @@
+%code where the third rule is computed as inverse square. There are provisions with respect to the closest 15 and the 
+%rest of the flock which is 35
+
+
+
+%10670 is the point they started moving
+clear F
+%set(gca,'Color','k')
+h = animatedline('Marker','o','Color','g');
+h1 = animatedline('Marker','o','Color','r');j = 0;
+%h111 = animatedline('Marker','o','Color','r');
+%h121 = animatedline('Marker','o','Color','r');
+h2 = animatedline('Marker','o','Color','g');%change to blue for single agent
+
+h3 = animatedline('Marker','o','Color','g');
+h4 = animatedline('Marker','o','Color','g');
+%h3 = animatedline('Marker','o','Color','b');
+%h4 = animatedline('Marker','o','Color','b');
+h5 = animatedline('Marker','o','Color','g');
+h6 = animatedline('Marker','o','Color','g');
+h7 = animatedline('Marker','o','Color','g');
+h8 = animatedline('Marker','o','Color','g');
+h9 = animatedline('Marker','o','Color','g');
+h10 = animatedline('Marker','o','Color','g');
+h11 = animatedline('Marker','o','Color','g');
+h12 = animatedline('Marker','o','Color','g');
+h13 = animatedline('Marker','o','Color','g');
+h14 = animatedline('Marker','o','Color','g');
+h15 = animatedline('Marker','o','Color','g');
+h16 = animatedline('Marker','o','Color','g');
+h17 = animatedline('Marker','o','Color','g');
+h18 = animatedline('Marker','o','Color','g');
+h19 = animatedline('Marker','o','Color','g');
+h20 = animatedline('Marker','o','Color','g');
+h21 = animatedline('Marker','o','Color','g');
+h22 = animatedline('Marker','o','Color','g');
+h23 = animatedline('Marker','o','Color','g');
+h24 = animatedline('Marker','o','Color','g');
+h25 = animatedline('Marker','o','Color','g');
+h26 = animatedline('Marker','o','Color','g');
+h27 = animatedline('Marker','o','Color','g');
+h28 = animatedline('Marker','o','Color','g');
+h29 = animatedline('Marker','o','Color','g');
+h30 = animatedline('Marker','o','Color','g');
+h31 = animatedline('Marker','o','Color','g');
+h32 = animatedline('Marker','o','Color','g');
+h33 = animatedline('Marker','o','Color','g');
+h34 = animatedline('Marker','o','Color','g');
+h35 = animatedline('Marker','o','Color','g');
+h36 = animatedline('Marker','o','Color','g');
+%for i = 1:size(cv1,1)-10000
+%for i = 1:3670
+%for i = 1:400
+for i = 1:10000
+   
+  
+    j = j+1;
+    if i<=60
+        
+       if i>=55
+           addpoints(h1,cv1(10000+i,1),cv1(10000+i,37));hold on;
+       else
+           addpoints(h2,cv1(10000+i,1),cv1(10000+i,37));hold on;
+       end
+       
+       
+       addpoints(h3, cv1(10000+i,2), cv1(10000+i, 38));hold on;
+       addpoints(h4, cv1(10000+i,3), cv1(10000+i, 39));hold on;
+       addpoints(h5, cv1(10000+i,4), cv1(10000+i, 40));hold on;
+       addpoints(h6, cv1(10000+i,5), cv1(10000+i, 41));hold on;
+       addpoints(h7, cv1(10000+i,6), cv1(10000+i, 42));hold on
+       addpoints(h8, cv1(10000+i,7), cv1(10000+i, 43));hold on
+       addpoints(h9, cv1(10000+i,8), cv1(10000+i, 44));hold on
+       addpoints(h10, cv1(10000+i,9), cv1(10000+i, 45));hold on
+       addpoints(h11, cv1(10000+i,10), cv1(10000+i, 46));hold on
+       addpoints(h12, cv1(10000+i,11), cv1(10000+i, 47));hold on
+       addpoints(h13, cv1(10000+i,12), cv1(10000+i, 48));hold on
+       addpoints(h14, cv1(10000+i,13), cv1(10000+i, 49));hold on
+       addpoints(h15, cv1(10000+i,14), cv1(10000+i, 50));hold on
+       addpoints(h16, cv1(10000+i,15), cv1(10000+i, 51));hold on
+       addpoints(h17, cv1(10000+i,16), cv1(10000+i, 52));hold on
+       addpoints(h18, cv1(10000+i,17), cv1(10000+i, 53));hold on
+       addpoints(h19, cv1(10000+i,18), cv1(10000+i, 54));hold on
+       addpoints(h20, cv1(10000+i,19), cv1(10000+i, 55));hold on
+       addpoints(h21, cv1(10000+i,20), cv1(10000+i, 56));hold on
+       addpoints(h22, cv1(10000+i,21), cv1(10000+i, 57));hold on
+       addpoints(h23, cv1(10000+i,22), cv1(10000+i, 58));hold on
+       addpoints(h24, cv1(10000+i,23), cv1(10000+i, 59));hold on
+       addpoints(h25, cv1(10000+i,24), cv1(10000+i, 60));hold on
+       addpoints(h26, cv1(10000+i,25), cv1(10000+i, 61));hold on
+       addpoints(h27, cv1(10000+i,26), cv1(10000+i, 62));hold on
+       addpoints(h28, cv1(10000+i,27), cv1(10000+i, 63));hold on
+       addpoints(h29, cv1(10000+i,28), cv1(10000+i, 64));hold on
+       addpoints(h30, cv1(10000+i,29), cv1(10000+i, 65));hold on
+       addpoints(h31, cv1(10000+i,30), cv1(10000+i, 66));hold on
+       addpoints(h32, cv1(10000+i,31), cv1(10000+i, 67));hold on
+       addpoints(h33, cv1(10000+i,32), cv1(10000+i, 68));hold on
+       addpoints(h34, cv1(10000+i,33), cv1(10000+i, 69));hold on
+       addpoints(h35, cv1(10000+i,34), cv1(10000+i, 70));hold on
+       addpoints(h36, cv1(10000+i,35), cv1(10000+i, 71));hold on
+       axis([ -458.9400  -300.410000 30.4360 200]);%the usual
+       %axis([-380.9400  -320.410000 60.4360 260])
+       %axis([-544.8 -333.8320  185.92  423.07]);
+       %axis([ -533.9400  -300.410000 30.4360 350]);%the usual
+       drawnow update
+       drawnow update
+       xlabel('x-axis')
+       ylabel('y-axis')
+       %F(i) = getframe;
+       ax = gca;
+       pause(0.01)
+       if j>=1
+           clearpoints(h);clearpoints(h1);clearpoints(h2);
+           %clearpoints(h111);clearpoints(h121);
+           clearpoints(h3);clearpoints(h4);clearpoints(h5);
+           clearpoints(h6);clearpoints(h7);clearpoints(h8);
+           clearpoints(h9);clearpoints(h10);clearpoints(h11);
+           clearpoints(h12);clearpoints(h13);clearpoints(h14);
+           clearpoints(h15);clearpoints(h16);clearpoints(h17);
+           clearpoints(h18);clearpoints(h19);clearpoints(h20);
+           clearpoints(h21);clearpoints(h22);clearpoints(h23);
+           clearpoints(h24);clearpoints(h25);clearpoints(h26);
+           clearpoints(h27);clearpoints(h28);clearpoints(h29);
+           clearpoints(h30);clearpoints(h31);clearpoints(h32);
+           clearpoints(h33);clearpoints(h34);clearpoints(h35);
+           clearpoints(h36);
+           j = 0;
+       else
+       end
+
+    
+    else
+   
+       i = i-60;
+       display(i)
+       addpoints(h1,uy(i,1),uy(i,2));hold on 
+       %addpoints(h111,uy1(i,1),uy1(i,2));hold on
+       %addpoints(h121,uy2(i,1),uy1(i,2));hold on
+       addpoints(h2,cv1(10060+i,1),cv1(10060+i,37))
+       hold on
+       addpoints(h3, cv1(10060+i,2), cv1(10060+i, 38))
+       hold on 
+       addpoints(h4, cv1(10060+i,3), cv1(10060+i, 39))
+       hold on
+       addpoints(h5, cv1(10060+i,4), cv1(10060+i, 40))
+       hold on
+       addpoints(h6, cv1(10060+i,5), cv1(10060+i, 41))
+       hold on
+       addpoints(h7, cv1(10060+i,6), cv1(10060+i, 42))
+       hold on
+       addpoints(h8, cv1(10060+i,7), cv1(10060+i, 43))
+       hold on
+       addpoints(h9, cv1(10060+i,8), cv1(10060+i, 44))
+       hold on
+       addpoints(h10, cv1(10060+i,9), cv1(10060+i, 45))
+       hold on
+       addpoints(h11, cv1(10060+i,10), cv1(10060+i, 46))
+       hold on
+       addpoints(h12, cv1(10060+i,11), cv1(10060+i, 47))
+       hold on
+       addpoints(h13, cv1(10060+i,12), cv1(10060+i, 48))
+       hold on
+       addpoints(h14, cv1(10060+i,13), cv1(10060+i, 49))
+       hold on
+       addpoints(h15, cv1(10060+i,14), cv1(10060+i, 50))
+       hold on
+       addpoints(h16, cv1(10060+i,15), cv1(10060+i, 51))
+       hold on
+       addpoints(h17, cv1(10060+i,16), cv1(10060+i, 52))
+       hold on
+       addpoints(h18, cv1(10060+i,17), cv1(10060+i, 53))
+       hold on
+       addpoints(h19, cv1(10060+i,18), cv1(10060+i, 54))
+       hold on
+       addpoints(h20, cv1(10060+i,19), cv1(10060+i, 55))
+       hold on
+       addpoints(h21, cv1(10060+i,20), cv1(10060+i, 56))
+       hold on
+       addpoints(h22, cv1(10060+i,21), cv1(10060+i, 57))
+       hold on
+       addpoints(h23, cv1(10060+i,22), cv1(10060+i, 58))
+       hold on
+       addpoints(h24, cv1(10060+i,23), cv1(10060+i, 59))
+       hold on
+       addpoints(h25, cv1(10060+i,24), cv1(10060+i, 60))
+       hold on
+       addpoints(h26, cv1(10060+i,25), cv1(10060+i, 61))
+       hold on
+       addpoints(h27, cv1(10060+i,26), cv1(10060+i, 62))
+       hold on
+       addpoints(h28, cv1(10060+i,27), cv1(10060+i, 63))
+       hold on
+       addpoints(h29, cv1(10060+i,28), cv1(10060+i, 64))
+       hold on
+       addpoints(h30, cv1(10060+i,29), cv1(10060+i, 65))
+       hold on
+       addpoints(h31, cv1(10060+i,30), cv1(10060+i, 66))
+       hold on
+       addpoints(h32, cv1(10060+i,31), cv1(10060+i, 67))
+       hold on
+       addpoints(h33, cv1(10060+i,32), cv1(10060+i, 68))
+       hold on
+       addpoints(h34, cv1(10060+i,33), cv1(10060+i, 69))
+       hold on
+       addpoints(h35, cv1(10060+i,34), cv1(10060+i, 70))
+       hold on
+       addpoints(h36, cv1(10060+i,35), cv1(10060+i, 71))
+       drawnow update
+       xlabel('x-axis')
+       ylabel('y-axis')
+       title(sprintf('time in seconds: %dsecs',i))
+       F(i) = getframe;
+       
+       
+  
+       pause(0.01)
+       if j>=1
+           clearpoints(h);clearpoints(h1);clearpoints(h2);
+           %clearpoints(h111);clearpoints(h121);
+           clearpoints(h3);clearpoints(h4);clearpoints(h5);
+           clearpoints(h6);clearpoints(h7);clearpoints(h8);
+           clearpoints(h9);clearpoints(h10);clearpoints(h11);
+           clearpoints(h12);clearpoints(h13);clearpoints(h14);
+           clearpoints(h15);clearpoints(h16);clearpoints(h17);
+           clearpoints(h18);clearpoints(h19);clearpoints(h20);
+           clearpoints(h21);clearpoints(h22);clearpoints(h23);
+           clearpoints(h24);clearpoints(h25);clearpoints(h26);
+           clearpoints(h27);clearpoints(h28);clearpoints(h29);
+           clearpoints(h30);clearpoints(h31);clearpoints(h32);
+           clearpoints(h33);clearpoints(h34);clearpoints(h35);
+           clearpoints(h36);
+           j = 0;
+           %h = animatedline('Marker','o','Color','g');h1 = animatedline('Marker','o','Color','r');
+           %h2 = animatedline('Marker','o','Color','b');
+      
+       else 
+   end
+    end
+    
+ 
+  %jh = VideoWriter('bb10000');  
+  %open(jh)
+  %writeVideo(jh,F);close(jh);
+end
+jh = VideoWriter('bb10000bo');  
+open(jh)
+writeVideo(jh,F);
+%jh.FrameRate = 6;
+
+
