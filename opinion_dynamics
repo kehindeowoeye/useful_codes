@@ -1,0 +1,44 @@
+N = 4000;%same as steps
+no_of_agents = 40;
+neigb_size = 4;mu = 0.3;
+
+op=[];
+rea = repmat(-1,10,1);
+r = -1 + (2).*rand(20,1);
+reb = repmat(1,10,1);
+op = vertcat(op,rea,r,reb);%op = sort(op);
+%op =  repmat(op,1,1000);
+uc1 = 1;uc2 = 0.5;
+
+%da = rand(1000,1000);
+for i = 1:N
+    op1 = op(:,i);
+    
+    agent1 = randi([1 no_of_agents],1);
+    x1 = op1(agent1);
+    [~,idx] = sort((op1(agent1)-op1));
+    id_nn = idx(2:2+neigb_size-1);
+    agent2 = randi([1 neigb_size ],1);
+    agent2 = id_nn(agent2);
+    x2 = op1(agent2);
+    
+    
+    %ku1 = kernel(x1,uc1,x2,uc2);
+    %ku2 = kernel(x1,uc1,x2,uc2);
+    ku1 = exp(-((x1-x2)/uc1)^2);ku2 = ku1;
+    x1 = x1 + mu*ku1*(x2-x1);
+    x2 = x2 + mu*ku2*(x1-x2);
+    uc1 =  uc1 + mu*ku1*(uc2-uc1);
+    uc2 =  uc2 + mu*ku2*(uc1-uc2);
+    op1(agent1) = x1;op1(agent2) = x2;
+    op = horzcat(op,op1);
+end
+
+
+for i = 1:40
+    plot(op(i,:))
+    hold on
+    
+ 
+end
+
