@@ -1,0 +1,163 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Plots the errros and occupancy frequency in the grids
+
+NrGrid = 3; % Number Of Grids
+x = linspace(min(dabi(:,1)), max(dabi(:,1)), NrGrid+1);
+y = linspace(min(dabi(:,2)), max(dabi(:,2)), NrGrid+1);
+
+x1=[];y1=[];
+for i = 1:NrGrid 
+    x1 = horzcat(x1,mean(x(i:i+1)));
+    y1 = horzcat(y1,mean(y(i:i+1)));
+end
+
+[X,Y] = meshgrid(x1,y1);
+figure(1)
+plot(X,Y,'k')
+hold on
+plot(Y,X,'k')
+hold off
+set(gca, 'Box','off', 'XTick',[], 'YTick',[])
+axis square
+
+%ala = rand(3,3);
+%heatmap(X(1,:),flip(Y(:,1)),ala)
+
+
+ma = zeros(3,3);a=[];b=[];c=[];d=[];e=[];f=[];g=[];h=[];k=[];
+for i = 1:length(dabi)
+    
+    if dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(2)
+        a = horzcat(a , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(1)
+        b = horzcat(b , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(1)
+        c = horzcat(c , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        d = horzcat(d , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        e = horzcat(e , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        f = horzcat(f , mean(re(i,:)) );
+    
+    elseif dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        g = horzcat(g , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        h = horzcat(h , mean(re(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        k = horzcat(k , mean(re(i,:)) );
+    
+    else
+    end
+    
+end
+
+%plot the errors
+ma(3,1) =  mean(a);ma(3,2) =  mean(b);ma(3,3) =  mean(c);
+ma(2,1) =  mean(d);ma(2,2) =  mean(e);ma(2,3) =  mean(f);
+ma(1,1) =  mean(g);ma(1,2) =  mean(h);ma(1,3) =  mean(k);
+heatmap(X(1,:),flip(Y(:,1)),ma)
+
+%plots the distribution
+la = zeros(3,3);
+total_len = length(a)+length(b)+length(c)+length(d)+length(e)+length(f)+length(g)+length(h)+length(k) ;
+la(3,1) =  length(a)/total_len;la(3,2) =  length(b)/total_len;la(3,3) =  length(c)/total_len;
+la(2,1) =  length(d)/total_len;la(2,2) =  length(e)/total_len;la(2,3) =  length(f)/total_len;
+la(1,1) =  length(g)/total_len;la(1,2) =  length(h)/total_len;la(1,3) =  length(k)/total_len;
+heatmap(X(1,:),flip(Y(:,1)),la)
+
+%plots the actual numbers
+la(3,1) =  length(a);la(3,2) =  length(b);la(3,3) =  length(c);
+la(2,1) =  length(d);la(2,2) =  length(e);la(2,3) =  length(f);
+la(1,1) =  length(g);la(1,2) =  length(h);la(1,3) =  length(k);
+heatmap(X(1,:),flip(Y(:,1)),la)
+
+
+xlabel('X-axis');ylabel('Y-axis')
+xlabel('X-axis');ylabel('Y-axis')
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%plots the mean velocity
+NrGrid = 3; % Number Of Grids
+x = linspace(min(dabi(:,1)), max(dabi(:,1)), NrGrid+1);
+y = linspace(min(dabi(:,2)), max(dabi(:,2)), NrGrid+1);
+
+x1=[];y1=[];
+for i = 1:NrGrid 
+    x1 = horzcat(x1,mean(x(i:i+1)));
+    y1 = horzcat(y1,mean(y(i:i+1)));
+end
+
+[X,Y] = meshgrid(x1,y1);
+figure(1)
+plot(X,Y,'k')
+hold on
+plot(Y,X,'k')
+hold off
+set(gca, 'Box','off', 'XTick',[], 'YTick',[])
+axis square
+
+%ala = rand(3,3);
+%heatmap(X(1,:),flip(Y(:,1)),ala)
+
+
+ma = zeros(3,3);a=[];b=[];c=[];d=[];e=[];f=[];g=[];h=[];k=[];
+for i = 1:length(dabi)
+    
+    if dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(2)
+        a = horzcat(a , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(1)
+        b = horzcat(b , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(1) && dabi(i,2)<=y(1)
+        c = horzcat(c , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        d = horzcat(d , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        e = horzcat(e , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(2) && dabi(i,2)<=y(3)
+        f = horzcat(f , mean(gdm(i,:)) );
+    
+    elseif dabi(i,1)>=x(1) && dabi(i,1)<=x(2) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        g = horzcat(g , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(2) && dabi(i,1)<=x(3) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        h = horzcat(h , mean(gdm(i,:)) );
+        
+    elseif dabi(i,1)>=x(3) && dabi(i,1)<=x(4) &&  dabi(i,2)>=y(3) && dabi(i,2)<=y(4)
+        k = horzcat(k , mean(gdm(i,:)) );
+    
+    else
+    end
+    
+end
+
+%plot the errors
+ma(3,1) =  mean(a);ma(3,2) =  mean(b);ma(3,3) =  mean(c);
+ma(2,1) =  mean(d);ma(2,2) =  mean(e);ma(2,3) =  mean(f);
+ma(1,1) =  mean(g);ma(1,2) =  mean(h);ma(1,3) =  mean(k);
+heatmap(X(1,:),flip(Y(:,1)),ma)
+
+
+
+xlabel('X-axis');ylabel('Y-axis')
+xlabel('X-axis');ylabel('Y-axis')
