@@ -1,0 +1,43 @@
+N = 10000;%same as steps
+no_of_agents = 30;
+mu = 0.5;
+na = 10;nb = 10;nc=10;
+op=[];
+rea = repmat(-1,na,1);
+%r = repmat(0,nb,1);
+r = -1+(2).*rand(20,1);
+reb = repmat(1,nc,1);
+op = vertcat(op,rea,r,reb);
+uc=[];
+uca = repmat(0.1,na,1);
+ucn = repmat(0.4,nb,1);
+uc = vertcat(uc,uca,ucn,uca);
+
+for i = 1:N
+    op1 = op(:,i);
+    uc_ = uc(:,1);
+    
+    agent1 = randi([1 no_of_agents],1);
+    x1 = op1(agent1);
+    agent2 = randi([1 no_of_agents],1);
+    while agent2 == agent1
+        agent2 = randi([1 no_of_agents],1);
+    end
+    
+    
+    agent2 =  randi([1 no_of_agents],1);
+    x2 = op1(agent2);
+    uc1 = uc_(agent1);
+    uc2 = uc_(agent2);
+    ku1 = exp(-((x1-x2)/uc1)^2);ku2 = ku1;
+    x1 = x1 + mu*ku1*(x2-x1);
+    x2 = x2 + mu*ku2*(x1-x2);
+    uc1 =  uc1 + mu*ku1*(uc2-uc1);
+    uc2 =  uc2 + mu*ku2*(uc1-uc2);
+    op1(agent1) = x1;op1(agent2) = x2;
+    op = horzcat(op,op1);
+end
+for i = 1:no_of_agents
+    plot(op(i,:))
+    hold on
+end
